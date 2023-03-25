@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'components/categories.dart';
 import 'components/models/category.dart';
+import 'components/models/my_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -103,43 +104,34 @@ class _HomePageState extends State<HomePage> {
               // big one tile horizontally scrollable view/list
               Expanded(
                 child: Container(
-                  padding: const EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Colors.blueGrey[200],
+                    color: Colors.blueGrey[900],
+
                   ),
                   child: ListView.builder(
-                      itemCount: 5,
-                      scrollDirection: Axis.vertical,
-                      itemBuilder: (context, index) {
-                        // create a new/ call anew categor list data
-                        CardTile cardtile = CardTile(
-                            name: "Boiled Eggs",
-                            price: "R30.00",
-                            icon: const Icon(Icons.coffee,
-                            size: 90,
-                            ),
-                            description: "an egg is good");
+                    itemCount: 5,
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      // create a new/ call anew categor list data
+                      CardTile cardtile = CardTile(
+                        name: "Boiled Eggs",
+                        price: "R30.00",
+                        icon: Icon(Icons.coffee,
+                          size: 60,
+                          color: Colors.blueGrey[400],
+                        ),
+                        description: "Good Protein"
+                      );
 
-                        return Categories(
-                          cardtile: cardtile,
-                        );
-                      }),
+                      return Categories(
+                        cardtile: cardtile,
+                      );
+                    }
+                  ),
                 ),
               ),
 
-              Row(
-                children: const [
-                  Text(
-                    "Trending",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20,
-                      color: Colors.white,
-                      height: 1.5,
-                    ),
-                  ),
-                ],
-              ),
             ],
           ),
         ),
