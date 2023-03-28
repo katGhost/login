@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'components/categories.dart';
-import 'components/models/category.dart';
-import 'components/models/my_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,6 +6,66 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
+
+List<Map<String, dynamic>> cardShop = [
+  {
+    "name": "Frutose",
+    "price": "R380",
+    "icon": const Icon(Icons.run_circle_rounded),
+    "description": "Take on treadmill"
+  },
+  {
+    "name": "Creatine Powder",
+    "price": "R925.00",
+    "icon": const Icon(Icons.food_bank_outlined),
+    "description": "Muscle recovery"
+  },
+  {
+    "name": "Egg Whites Shake",
+    "price": "R420.00",
+    "icon": const Icon(Icons.water_damage_rounded),
+    "description": "Pre-workout snack"
+  },
+  {
+    "name": "Chocolate Shake",
+    "price": "R880.00",
+    "icon": const Icon(Icons.coffee),
+    "description": "Blends with fruits"
+  },
+  {
+    "name": "Whey Protein",
+    "price": "R350.00",
+    "icon": const Icon(
+      Icons.food_bank_rounded,
+    ),
+    "description": "Good for a smoothie"
+  },
+  //just to make the listView a little bit longer
+  {
+    "name": "Whey Protein",
+    "price": "R350.00",
+    "icon": const Icon(
+      Icons.food_bank_rounded,
+    ),
+    "description": "Good for a smoothie"
+  },
+  {
+    "name": "Whey Protein",
+    "price": "R350.00",
+    "icon": const Icon(
+      Icons.food_bank_rounded,
+    ),
+    "description": "Good for a smoothie"
+  },
+  {
+    "name": "Whey Protein",
+    "price": "R350.00",
+    "icon": const Icon(
+      Icons.food_bank_rounded,
+    ),
+    "description": "Good for a smoothie"
+  },
+];
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -53,7 +110,7 @@ class _HomePageState extends State<HomePage> {
               ),
 
               const SizedBox(
-                height: 15,
+                height: 25,
               ),
 
               // search bar. not working only UI
@@ -81,7 +138,7 @@ class _HomePageState extends State<HomePage> {
               ),
 
               const SizedBox(
-                height: 20,
+                height: 25,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -107,31 +164,69 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.blueGrey[900],
-
                   ),
                   child: ListView.builder(
-                    itemCount: 5,
-                    scrollDirection: Axis.vertical,
+                    itemCount: cardShop.length,
                     itemBuilder: (context, index) {
-                      // create a new/ call anew categor list data
-                      CardTile cardtile = CardTile(
-                        name: "Boiled Eggs",
-                        price: "R30.00",
-                        icon: Icon(Icons.coffee,
-                          size: 60,
-                          color: Colors.blueGrey[400],
-                        ),
-                        description: "Good Protein"
-                      );
+                      return Card(
+                        elevation: 5,
+                        margin: const EdgeInsets.only(bottom: 15),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.blueGrey[500],
+                            borderRadius: BorderRadius.circular(12)
+                          ),
+                          child: ListTile(
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                            leading: Container(
+                              height: 80,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: Colors.blueGrey[700],
+                              ),
+                              padding: const EdgeInsets.all(12),
+                              child: cardShop[index]['icon']
+                            ),
 
-                      return Categories(
-                        cardtile: cardtile,
+                            // Title is the name of the item in the data 
+                            title: Text(
+                              cardShop[index]['name'],
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 18,
+                                color: Colors.white,
+                                height: 1.5,
+                              ),
+                            ),
+
+                            // Secondly render the subtitel or in our case the description
+                            subtitle: Text(
+                              cardShop[index]['description'],
+                              style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14,
+                                color: Colors.blueGrey[300],
+                                height: 1.5,
+                              ),
+                            ),
+
+                            //lastly we render the price
+                            trailing: Text(
+                              cardShop[index]['price'],
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18,
+                                color: Colors.white60,
+                              ),
+                            ),
+                          ),
+                        ),
                       );
-                    }
+                    },
                   ),
                 ),
               ),
-
             ],
           ),
         ),
@@ -139,3 +234,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+//* children: cardShop.map((item) => ListTile(
+                      //leading: item['icon'],
+                      //title: Text(item['name']),
+                      //subtitle: Text(item['description']),
+                      //trailing: Text(item['price']),
+                    //)).toList(), */

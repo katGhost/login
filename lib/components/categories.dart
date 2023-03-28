@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import '../components/models/category.dart';
 
 class Categories extends StatelessWidget {
-  CardTile cardtile;
 
-  Categories({super.key, required this.cardtile});
+  // final icon;
+  final String title;
+  final String sub;
+  final String amount;
+
+  const Categories({super.key, required this.title, required this.sub, required this.amount });
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +28,13 @@ class Categories extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.black54, borderRadius: BorderRadius.circular(12),
               ),
-              child: cardtile.icon
+              child: Icon(Icons.coffee)
             ),
             Container(
               child: Column(
                 children: <Widget>[
                   Text(
-                    cardtile.name,
+                    {title} as String,
                     style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 18,
@@ -40,7 +44,7 @@ class Categories extends StatelessWidget {
                   ),
 
                   Text(
-                    cardtile.description,
+                    {sub} as String,
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 14,
@@ -49,7 +53,7 @@ class Categories extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    cardtile.price,
+                    {amount} as String,
                     style: const TextStyle(
                       fontWeight: FontWeight.w400,
                       fontSize: 18,

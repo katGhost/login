@@ -88,7 +88,7 @@ class LoginPage extends StatelessWidget {
                   onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomePage()
+                        builder: (context) => HomePage()
                       )
                   ),
                   child: Container(
